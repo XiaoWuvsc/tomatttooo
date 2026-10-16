@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>相框工具 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 相框工具 —— 加白边/色边相框，按比例出图。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .frame-opts { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+    .frame-row { display: flex; gap: 0.9rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .frame-row label { color: var(--muted); font-size: 0.88rem; }
+    .frame-row input[type="range"] { accent-color: #ff6347; width: 180px; }
+    .frame-row select {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 0.5rem 0.9rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">FRAME · 小工具</p>
+      <h1 class="t-title">相框工具</h1>
+      <p class="t-desc">给照片加白边/色边相框，还能按 1:1、4:3、16:9 等比例出图。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片</strong>
+      <small>JPG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+
+    <div class="t-panel frame-opts" id="opts" hidden>
+      <div class="frame-row">
+        <label>边框宽度 <b id="out-border">60</b>px</label>
+        <input type="range" id="border" min="0" max="800" step="10" value="60">
+        <label>边框颜色</label>
+        <div class="t-chips" id="color-chips">
+          <button type="button" class="t-chip is-active" data-color="#ffffff">白</button>
+          <button type="button" class="t-chip" data-color="#111111">黑</button>
+          <button type="button" class="t-chip" data-color="#ff6347">番茄红</button>
+          <button type="button" class="t-chip" data-color="#f4efe4">米白</button>
+        </div>
+      </div>
+      <div class="frame-row">
+        <label>输出比例</label>
+        <select id="ratio">
+          <option value="orig">原比例</option>
+          <option value="1:1">1:1 正方形</option>
+          <option value="4:3">4:3</option>
+          <option value="3:2">3:2</option>
+          <option value="16:9">16:9</option>
+          <option value="9:16">9:16</option>
+          <option value="4:5">4:5</option>
+          <option value="5:4">5:4</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="t-stage" id="stage">
+      <div class="t-empty" id="empty">导入照片后预览相框效果</div>
+      <canvas class="t-canvas" id="canvas"></canvas>
+    </div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn" id="btn-export" type="button">⬇ 导出</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/frame.js?v=2"></script>
+</body>
+</html>

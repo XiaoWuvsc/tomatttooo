@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画幅裁切 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 画幅裁切工具 —— 按比例裁切照片（1:1、4:3、16:9、9:16 等），九宫格定位。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .crop-controls { display: grid; gap: 1rem; margin-top: 1.4rem; }
+    .posgrid { display: grid; grid-template-columns: repeat(3, 44px); gap: 6px; justify-content: center; }
+    .posgrid button {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .posgrid button:hover { border-color: var(--accent); }
+    .posgrid button.is-active { background: var(--accent); border-color: var(--accent); }
+    .crop-row { display: flex; gap: 0.8rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+    .crop-row select {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 0.55rem 0.9rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .crop-row span { color: var(--subtle); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">CROP TOOL · 小工具</p>
+      <h1 class="t-title">画幅裁切</h1>
+      <p class="t-desc">按比例裁切照片，九宫格定位取景区域，适合社交平台 / 头像 / 封面尺寸。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片</strong>
+      <small>JPEG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+
+    <div class="crop-controls" id="controls" hidden>
+      <div class="t-chips" id="ratio-chips"></div>
+      <div class="crop-row">
+        <span>取景位置 · 或直接拖动取景框</span>
+        <div class="posgrid" id="posgrid">
+          <button type="button" data-gx="0" data-gy="0" title="左上"></button>
+          <button type="button" data-gx="0.5" data-gy="0" title="上中"></button>
+          <button type="button" data-gx="1" data-gy="0" title="右上"></button>
+          <button type="button" data-gx="0" data-gy="0.5" title="左中"></button>
+          <button type="button" data-gx="0.5" data-gy="0.5" class="is-active" title="正中"></button>
+          <button type="button" data-gx="1" data-gy="0.5" title="右中"></button>
+          <button type="button" data-gx="0" data-gy="1" title="左下"></button>
+          <button type="button" data-gx="0.5" data-gy="1" title="下中"></button>
+          <button type="button" data-gx="1" data-gy="1" title="右下"></button>
+        </div>
+      </div>
+      <div class="crop-row">
+        <span>裁切范围</span>
+        <input type="range" id="crop-zoom" min="50" max="100" step="1" value="100" style="accent-color:#ff6347; width:180px;">
+        <span id="out-zoom">100%</span>
+        <span>导出尺寸</span>
+        <select id="wm-scale">
+          <option value="orig">原图分辨率</option>
+          <option value="2048">长边 2048</option>
+          <option value="1600">长边 1600</option>
+          <option value="1080">长边 1080</option>
+        </select>
+        <select id="wm-format">
+          <option value="jpg">JPG</option>
+          <option value="png">PNG</option>
+        </select>
+        <span id="crop-info"></span>
+      </div>
+    </div>
+
+    <div class="t-stage" id="stage">
+      <div class="t-empty" id="empty">✂️ 导入照片开始裁切</div>
+      <canvas class="t-canvas" id="canvas"></canvas>
+    </div>
+
+    <div class="t-actions">
+      <button class="t-btn" id="btn-export" type="button" disabled>⬇ 导出裁切结果</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/crop.js?v=9"></script>
+  <script src="js/preview-zoom.js?v=8"></script>
+</body>
+</html>

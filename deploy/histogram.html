@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>直方图查看器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 直方图查看器 —— 查看照片曝光分布、亮度统计、过曝欠曝占比。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+.hist-stage { margin-top: 1.4rem; }
+    .hist-grid { display: grid; grid-template-columns: 300px 1fr; gap: 1.2rem; align-items: start; }
+    #preview { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; background: #1a1a1a; }
+    @media (max-width: 720px) { .hist-grid { grid-template-columns: 1fr; } }
+    #hist { width: 100%; height: 240px; border-radius: 12px; border: 1px solid var(--line); background: #101010; display: block; }
+    .hist-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 1.2rem; }
+    .hist-stat { border: 1px solid var(--line); border-radius: 12px; background: #141414; padding: 12px 16px; }
+    .hist-stat b { display: block; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+    .hist-stat span { color: var(--subtle); font-size: 0.8rem; }
+    .hist-legend { display: flex; gap: 16px; justify-content: center; margin-top: 0.9rem; flex-wrap: wrap; }
+    .hist-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">HISTOGRAM · 小工具</p>
+      <h1 class="t-title">直方图查看器</h1>
+      <p class="t-desc">判断曝光一眼看清：亮度与 RGB 三通道分布、过曝欠曝占比。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片</strong>
+      <small>JPG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+
+    <div class="hist-stage" id="stage" style="display:none;">
+      <div class="hist-grid">
+        <canvas id="preview"></canvas>
+        <div>
+          <canvas id="hist"></canvas>
+          <div class="hist-legend">
+            <span><i style="background:#e8e8e8"></i>亮度</span>
+            <span><i style="background:#ff5f56"></i>红</span>
+            <span><i style="background:#57d977"></i>绿</span>
+            <span><i style="background:#4da3ff"></i>蓝</span>
+          </div>
+          <div class="hist-stats" id="stats"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/histogram.js?v=3"></script>
+</body>
+</html>

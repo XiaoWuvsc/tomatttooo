@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拼图工具 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 拼图工具 —— 多张照片拼成一张：横排、竖排、四宫格、六宫格、九宫格。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .collage-opts { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+    .collage-row { display: flex; gap: 0.9rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .collage-row label { color: var(--muted); font-size: 0.88rem; }
+    .collage-row input[type="range"] { accent-color: #ff6347; width: 160px; }
+    .filelist { margin-top: 1.2rem; display: grid; gap: 10px; }
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #141414;
+    }
+    .file-item canvas { border-radius: 6px; flex-shrink: 0; }
+    .file-item b { flex: 1; min-width: 0; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-del {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .file-del:hover { border-color: #ff6347; color: #ff6347; }
+    .file-item { cursor: grab; transition: opacity 0.2s, border-color 0.2s; }
+    .file-item.is-dragging { opacity: 0.4; cursor: grabbing; }
+    .file-item.drag-over { border-color: #ff6347; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">COLLAGE · 小工具</p>
+      <h1 class="t-title">拼图工具</h1>
+      <p class="t-desc">多张照片拼成一张大图：横排、竖排、四宫格、六宫格、九宫格。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片（可多张）</strong>
+      <small>按导入顺序填充格子</small>
+    </button>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="t-notice" id="upload-notice" hidden></div>
+    <div class="filelist" id="filelist"></div>
+
+    <div class="t-panel collage-opts" id="opts" hidden>
+      <div class="collage-row">
+        <label>布局</label>
+        <div class="t-chips" id="layout-chips">
+          <button type="button" class="t-chip" data-layout="stack">长图拼接（无边框）</button>
+          <button type="button" class="t-chip" data-layout="2x1">横排 2</button>
+          <button type="button" class="t-chip is-active" data-layout="2x2">四宫格</button>
+          <button type="button" class="t-chip" data-layout="1x2">竖排 2</button>
+          <button type="button" class="t-chip" data-layout="2x3">六宫格</button>
+          <button type="button" class="t-chip" data-layout="3x3">九宫格</button>
+          <button type="button" class="t-chip" data-layout="1x3">竖排 3</button>
+        </div>
+      </div>
+      <div class="collage-row">
+        <label>间距 <b id="out-gap">12</b>px</label>
+        <input type="range" id="gap" min="0" max="40" step="2" value="12">
+        <label>填充</label>
+        <div class="t-chips" id="fit-chips">
+          <button type="button" class="t-chip is-active" data-fit="contain">完整显示（不裁切）</button>
+          <button type="button" class="t-chip" data-fit="cover">裁切填充</button>
+        </div>
+        <label>背景</label>
+        <div class="t-chips" id="bg-chips">
+          <button type="button" class="t-chip is-active" data-bg="#ffffff">白</button>
+          <button type="button" class="t-chip" data-bg="#111111">黑</button>
+          <button type="button" class="t-chip" data-bg="#ff6347">番茄红</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="t-stage" id="stage">
+      <div class="t-empty" id="empty">🧩 导入照片开始拼图</div>
+      <canvas class="t-canvas" id="canvas"></canvas>
+    </div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn" id="btn-export" type="button">⬇ 导出拼图</button>
+      <button class="t-btn t-btn--ghost" id="btn-clear" type="button">🗑 清空</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/collage.js?v=7"></script>
+  <script src="js/preview-zoom.js?v=10"></script>
+</body>
+</html>

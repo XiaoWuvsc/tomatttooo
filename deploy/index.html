@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tomatttooo · 摄影</title>
+  <meta name="description" content="tomatttooo 的个人摄影网站 —— 用镜头记录光影与生活。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=10">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css"></head>
+<body>
+
+  <!-- ======= 导航栏 ======= -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#home">
+      <img class="nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span class="nav__dot">.</span>
+    </a>
+    <nav class="nav__links">
+      <a href="#home" class="nav__link is-active">首页</a>
+      <a href="#about" class="nav__link">关于</a>
+      <a href="#gallery" class="nav__link">作品</a>
+      <a href="#inspire" class="nav__link">灵感</a>
+      <a href="tools.html" class="nav__link">工具</a>
+      <a href="#contact" class="nav__link">联系</a>
+    </nav>
+    <button class="nav__burger" id="burger" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ======= 首屏 ======= -->
+  <section class="hero" id="home">
+    <div class="hero__bg"></div>
+    <!-- 鼠标聚光灯：柔和的光跟随光标移动 -->
+    <div class="hero__spotlight" id="spotlight" aria-hidden="true"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">PHOTOGRAPHY · 摄影</p>
+      <h1 class="hero__title reveal">tomatttooo</h1>
+      <p class="hero__sub reveal">快门之下，光有了形状，生活有了温度。</p>
+      <a class="btn reveal" href="#gallery">欣赏作品 ↓</a>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ======= 关于 ======= -->
+  <section class="about" id="about">
+    <div class="container about__grid">
+      <div class="about__photo reveal">
+        <img decoding="async" src="img/走马槽风景区.jpg" alt="tomatttooo 拍摄的风景">
+      </div>
+      <div class="about__text">
+        <p class="section-label reveal">ABOUT ME · 关于我</p>
+        <h2 class="section-title reveal">你好，我是 tomatttooo</h2>
+        <p class="reveal">一名热爱摄影的学生</p>
+        <p class="reveal">無限進步</p>
+        <ul class="about__stats reveal">
+          <li><strong>3+</strong><span>年拍摄</span></li>
+          <li><strong>1.2w</strong><span>快门次数</span></li>
+          <li><strong>∞</strong><span>对摄影的热爱</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 作品集 ======= -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <div class="gallery__head reveal">
+        <p class="section-label">GALLERY · 作品</p>
+        <h2 class="section-title">光影集</h2>
+        <input type="search" class="gallery__search" id="gallery-search" placeholder="搜索作品标题…">
+      </div>
+
+      <div class="filters reveal" id="filters">
+        <button class="filter is-active" data-filter="all">全部</button>
+        <button class="filter" data-filter="landscape">风光</button>
+        <button class="filter" data-filter="portrait">人像</button>
+        <button class="filter" data-filter="street">街拍</button>
+        <button class="filter" data-filter="still">静物</button>
+      </div>
+
+      <div class="grid" id="grid">
+        <figure class="card reveal" data-category="street" data-iso="800" data-shutter="1/60s" data-aperture="f/1.4" data-lens="35mm">
+          <img decoding="async" src="img/酒吧特写.jpg" alt="酒吧特写" loading="lazy">
+          <figcaption><h3>酒吧特写</h3><p>街拍</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="200" data-shutter="1/250s" data-aperture="f/2.8" data-lens="85mm">
+          <img decoding="async" src="img/孔雀.jpg" alt="孔雀" loading="lazy">
+          <figcaption><h3>孔雀</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="4s" data-aperture="f/8" data-lens="24-70mm">
+          <img decoding="async" src="img/陆家嘴之夜.jpg" alt="陆家嘴之夜" loading="lazy">
+          <figcaption><h3>陆家嘴之夜</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="still" data-iso="100" data-shutter="1/125s" data-aperture="f/2.8" data-lens="50mm">
+          <img decoding="async" src="img/瓷雕鹿.jpg" alt="瓷雕鹿" loading="lazy">
+          <figcaption><h3>瓷雕鹿</h3><p>静物</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="1/1000s" data-aperture="f/5.6" data-lens="70-200mm">
+          <img decoding="async" src="img/战斗机.jpg" alt="战斗机" loading="lazy">
+          <figcaption><h3>战斗机</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="still" data-iso="400" data-shutter="1/160s" data-aperture="f/2" data-lens="85mm">
+          <img decoding="async" src="img/招财猫特写.jpg" alt="招财猫特写" loading="lazy">
+          <figcaption><h3>招财猫特写</h3><p>静物</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="still" data-iso="200" data-shutter="1/200s" data-aperture="f/4" data-lens="35mm">
+          <img decoding="async" src="img/东方一号导弹.jpg" alt="东方一号导弹" loading="lazy">
+          <figcaption><h3>东方一号导弹</h3><p>静物</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="1/320s" data-aperture="f/8" data-lens="24mm">
+          <img decoding="async" src="img/极简建筑.jpg" alt="极简建筑" loading="lazy">
+          <figcaption><h3>极简建筑</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="1/800s" data-aperture="f/6.3" data-lens="200mm">
+          <img decoding="async" src="img/飞机过境.jpg" alt="飞机过境" loading="lazy">
+          <figcaption><h3>飞机过境</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="portrait" data-iso="100" data-shutter="1/125s" data-aperture="f/2.8" data-lens="50mm">
+          <img decoding="async" src="img/军博毛主席雕像.jpg" alt="军博毛主席雕像" loading="lazy">
+          <figcaption><h3>军博毛主席雕像</h3><p>人像</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="still" data-iso="100" data-shutter="1/250s" data-aperture="f/5.6" data-lens="50mm">
+          <img decoding="async" src="img/色块.jpg" alt="色块" loading="lazy">
+          <figcaption><h3>色块</h3><p>静物</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="8s" data-aperture="f/11" data-lens="16-35mm">
+          <img decoding="async" src="img/蓝调下的陆家嘴.jpg" alt="蓝调下的陆家嘴" loading="lazy">
+          <figcaption><h3>蓝调下的陆家嘴</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="1/200s" data-aperture="f/9" data-lens="24-70mm">
+          <img decoding="async" src="img/陆家嘴全景照片.jpg" alt="陆家嘴全景照片" loading="lazy">
+          <figcaption><h3>陆家嘴全景照片</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="200" data-shutter="1/500s" data-aperture="f/5.6" data-lens="85mm">
+          <img decoding="async" src="img/塔楼剪影.jpg" alt="塔楼剪影" loading="lazy">
+          <figcaption><h3>塔楼剪影</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="400" data-shutter="1/2000s" data-aperture="f/4" data-lens="200mm">
+          <img decoding="async" src="img/飞翔的鸟的剪影.jpg" alt="飞翔的鸟的剪影" loading="lazy">
+          <figcaption><h3>飞翔的鸟的剪影</h3><p>风光</p></figcaption>
+        </figure>
+        <figure class="card reveal" data-category="landscape" data-iso="100" data-shutter="1/320s" data-aperture="f/8" data-lens="24mm">
+          <img decoding="async" src="img/极简建筑2.jpg" alt="极简建筑 2" loading="lazy">
+          <figcaption><h3>极简建筑 2</h3><p>风光</p></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 拍摄灵感生成器 ======= -->
+  <section class="inspire" id="inspire">
+    <div class="container inspire__inner">
+      <p class="section-label reveal">INSPIRATION · 灵感</p>
+      <h2 class="section-title reveal">今天拍点什么？</h2>
+      <div class="inspire__box reveal">
+        <p class="inspire__challenge" id="inspire-text">点击按钮，抽取一个拍摄灵感</p>
+        <button class="btn" id="inspire-btn">🎲 给我一个灵感</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= 格言 ======= -->
+  <section class="quote">
+    <blockquote class="reveal">
+      <p>“無限進步”</p>
+      <cite>—— 影视飓风.TIM</cite>
+    </blockquote>
+  </section>
+
+  <!-- ======= 联系 ======= -->
+  <section class="contact" id="contact">
+    <div class="container contact__inner">
+      <p class="section-label reveal">CONTACT · 联系</p>
+      <h2 class="section-title reveal">一起聊聊摄影吧</h2>
+      <p class="contact__desc reveal">约拍、合作或只是想聊聊镜头和光影，都欢迎来找我。</p>
+      <p class="contact__email reveal">📧 darcyshan@qq.com</p>
+      <div class="contact__links reveal">
+        <button class="btn btn--ghost" id="copy-email" type="button">📋 复制邮箱</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year">2025</span> tomatttooo · 用镜头记录世界</p>
+  </footer>
+
+  <!-- ======= 灯箱 ======= -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lb-close" aria-label="关闭">✕</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lb-prev" aria-label="上一张">‹</button>
+    <figure class="lightbox__body">
+      <img id="lb-img" src="" alt="">
+      <figcaption id="lb-cap"></figcaption>
+      <div class="lightbox__exif" id="lb-exif"></div>
+    </figure>
+    <button class="lightbox__nav lightbox__nav--next" id="lb-next" aria-label="下一张">›</button>
+  </div>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/photo-exif.js?v=1"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

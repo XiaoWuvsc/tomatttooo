@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>格式转换器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 格式转换器 —— JPG / PNG / WebP 互转，批量处理。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .convert-opts { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+    .convert-row { display: flex; gap: 0.9rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .convert-row label { color: var(--muted); font-size: 0.88rem; }
+    .convert-row input[type="range"] { accent-color: #ff6347; width: 180px; }
+    .result-list { margin-top: 1.4rem; display: grid; gap: 10px; }
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #141414;
+    }
+    .result-item canvas { border-radius: 6px; flex-shrink: 0; }
+    .result-meta { flex: 1; min-width: 0; }
+    .result-meta b { display: block; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .result-meta small { color: var(--subtle); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+    .file-del {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .file-del:hover { border-color: #ff6347; color: #ff6347; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">CONVERTER · 小工具</p>
+      <h1 class="t-title">格式转换器</h1>
+      <p class="t-desc">JPG / PNG / WebP 互转，批量处理，照片不用发给别人。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入图片（可多张）</strong>
+      <small>JPG / PNG / WebP / GIF / BMP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="t-notice" id="upload-notice" hidden></div>
+    <div class="result-list" id="filelist"></div>
+
+    <div class="t-panel convert-opts" id="opts" hidden>
+      <div class="convert-row">
+        <label>目标格式</label>
+        <div class="t-chips" id="fmt-chips">
+          <button type="button" class="t-chip is-active" data-fmt="jpg">JPG</button>
+          <button type="button" class="t-chip" data-fmt="png">PNG</button>
+          <button type="button" class="t-chip" data-fmt="webp">WebP</button>
+        </div>
+      </div>
+      <div class="convert-row" id="quality-row">
+        <label>质量 <b id="out-q">100</b></label>
+        <input type="range" id="quality" min="10" max="100" step="1" value="100">
+        <button class="t-btn" id="btn-go" type="button">开始转换</button>
+      </div>
+    </div>
+
+    <div class="result-list" id="results"></div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn" id="btn-zip" type="button">📦 全部下载 ZIP</button>
+      <button class="t-btn t-btn--ghost" id="btn-clear" type="button">🗑 清空</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/convert.js?v=3"></script>
+</body>
+</html>

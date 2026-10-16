@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>色彩提取器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 色彩提取器 —— 从照片提取主色调色板，复制色值，配色灵感。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; margin-top: 1.4rem; }
+    .swatch {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+      background: #141414;
+    }
+    .swatch:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .swatch__color { height: 84px; }
+    .swatch__info { padding: 8px 10px; }
+    .swatch__info b { display: block; font-size: 0.85rem; letter-spacing: 0.05em; font-variant-numeric: tabular-nums; }
+    .swatch__info small { color: var(--subtle); font-size: 0.75rem; }
+    .palette-side { display: grid; grid-template-columns: 260px 1fr; gap: 1.2rem; margin-top: 1.4rem; align-items: start; }
+    .palette-side canvas { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+    @media (max-width: 720px) { .palette-side { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">PALETTE · 小工具</p>
+      <h1 class="t-title">色彩提取器</h1>
+      <p class="t-desc">拖入照片，提取画面主色调色板，点色块复制色值，做配色和海报的好帮手。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片</strong>
+      <small>JPG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+    <div class="t-notice" id="notice" hidden></div>
+
+    <div class="palette-side" id="stage" style="display:none;">
+      <canvas id="preview"></canvas>
+      <div>
+        <div class="palette-grid" id="palette"></div>
+        <div class="t-actions">
+          <button class="t-btn" id="btn-copy-all" type="button">📋 复制全部色值</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/palette.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>工具选择 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 的摄影小工具：水印工坊、EXIF 查看器、画幅裁切，随开随用。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css"></head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">TOOLS · 工具箱</p>
+      <h1 class="t-title">选择一个工具</h1>
+    </div>
+
+    <div class="tool-cards">
+      <a class="tool-card" href="watermark.html">
+        <span class="icon">🖼️</span>
+        <strong>水印工坊</strong>
+        <p>七款参数卡模板：参数叠层、原创底栏、两列底栏、深色底栏、铁路记录、玻璃浮层、虚化参数卡。EXIF 自动识别，批量 ZIP 导出。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="exif.html">
+        <span class="icon">📷</span>
+        <strong>EXIF 查看器</strong>
+        <p>拖入一张相机直出的照片，立刻看到相机、镜头、焦距、光圈、快门、ISO、拍摄时间，一键复制参数。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="crop.html">
+        <span class="icon">✂️</span>
+        <strong>画幅裁切</strong>
+        <p>9 种比例裁切（1:1、4:3、16:9、9:16…），拖动取景框 + 三分线构图，导出尺寸可调。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="split.html">
+        <span class="icon">🧩</span>
+        <strong>切图工具</strong>
+        <p>九宫格 3×3 切图发朋友圈、三格横切拼图（竖图不切），一键导出 ZIP。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="compress.html">
+        <span class="icon">🗜️</span>
+        <strong>图片压缩器</strong>
+        <p>批量压缩照片：按质量、按目标大小、按尺寸，画质无差体积立减。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="convert.html">
+        <span class="icon">🔄</span>
+        <strong>格式转换器</strong>
+        <p>JPG / PNG / WebP 互转，批量处理，质量可调，一键导出 ZIP。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="palette.html">
+        <span class="icon">🎨</span>
+        <strong>色彩提取器</strong>
+        <p>提取照片主色调色板（前 8 色 + 占比），点色块复制色值。</p>
+        <span class="go">进入 →</span>
+      <a class="tool-card" href="collage.html">
+        <span class="icon">🧱</span>
+        <strong>拼图工具</strong>
+        <p>多张照片拼成一张：横排、竖排、四宫格、六宫格、九宫格，间距背景可调。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="histogram.html">
+        <span class="icon">📊</span>
+        <strong>直方图查看器</strong>
+        <p>亮度与 RGB 三通道直方图，曝光统计，一眼判断过曝欠曝。</p>
+        <span class="go">进入 →</span>
+      <a class="tool-card" href="rotate.html">
+        <span class="icon">🔁</span>
+        <strong>旋转翻转工具</strong>
+        <p>批量旋转 90/180 度、水平垂直镜像翻转，原分辨率导出 ZIP。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="tool-card" href="compare.html">
+        <span class="icon">↔</span>
+        <strong>对比查看器</strong>
+        <p>两张照片滑块对比：拖动分割线看调色前后、修图前后差异。</p>
+        <span class="go">进入 →</span>
+      <a class="tool-card" href="frame.html">
+        <span class="icon">⬜</span>
+        <strong>相框工具</strong>
+        <p>加白边/色边相框，按 1:1、4:3、16:9 等比例出图。</p>
+        <span class="go">进入 →</span>
+      </a>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

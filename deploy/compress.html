@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片压缩器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 图片压缩器 —— 批量压缩照片，质量/目标大小/尺寸三种模式。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .compress-opts { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+    .compress-row { display: flex; gap: 0.9rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+    .compress-row label { color: var(--muted); font-size: 0.88rem; }
+    .compress-row select, .compress-row input[type="number"] {
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--text);
+      padding: 0.55rem 0.9rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      width: 120px;
+    }
+    .compress-row input[type="range"] { accent-color: #ff6347; width: 180px; }
+    .result-list { margin-top: 1.4rem; display: grid; gap: 10px; }
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #141414;
+    }
+    .result-item canvas { border-radius: 6px; flex-shrink: 0; }
+    .result-meta { flex: 1; min-width: 0; }
+    .result-meta b { display: block; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .result-meta small { color: var(--subtle); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+    .saving { color: #7ed491; font-weight: 600; }
+    .file-del {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .file-del:hover { border-color: #ff6347; color: #ff6347; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">COMPRESSOR · 小工具</p>
+      <h1 class="t-title">图片压缩器</h1>
+      <p class="t-desc">批量压缩照片：按质量、按目标大小、按尺寸，画质肉眼无差、体积立减。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片（可多张）</strong>
+      <small>JPEG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="t-notice" id="upload-notice" hidden></div>
+    <div class="result-list" id="filelist"></div>
+
+    <div class="t-panel compress-opts" id="opts" hidden>
+      <div class="compress-row">
+        <label>格式</label>
+        <select id="fmt">
+          <option value="jpg">JPG（通用）</option>
+          <option value="webp">WebP（更小）</option>
+        </select>
+        <label>压缩质量 <b id="out-q">90</b></label>
+        <input type="range" id="quality" min="10" max="100" step="1" value="90">
+      </div>
+      <div class="compress-row">
+        <label>目标大小（可选）</label>
+        <input type="number" id="target-kb" min="10" step="10" placeholder="留空 = 只看质量">
+        <label>KB</label>
+        <label>最长边</label>
+        <select id="edge">
+          <option value="0">原图分辨率</option>
+          <option value="4096">4096</option>
+          <option value="2560">2560</option>
+          <option value="1920">1920</option>
+          <option value="1280">1280</option>
+        </select>
+        <button class="t-btn" id="btn-go" type="button">开始压缩</button>
+      </div>
+    </div>
+
+    <div class="result-list" id="results"></div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn" id="btn-zip" type="button">📦 全部下载 ZIP</button>
+      <button class="t-btn t-btn--ghost" id="btn-clear" type="button">🗑 清空</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/compress.js?v=5"></script>
+</body>
+</html>

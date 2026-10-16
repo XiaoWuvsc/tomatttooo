@@ -1,0 +1,466 @@
+/* 动态色散：注册角度变量，让边缘彩虹随光缓缓流转 */
+@property --disp-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes disp-drift {
+  from { --disp-angle: 0deg; }
+  to   { --disp-angle: 360deg; }
+}
+
+/* ============================================
+   tomatttooo · 液态玻璃主题 v5
+   对齐 Apple Liquid Glass：明亮白透磨砂 · 顶部发光
+   大圆角 · 克制配色 · 深景深
+   覆盖式主题：禁用本样式表即原样恢复当前 UI
+   ============================================ */
+
+/* ---------- 背景：深邃中性底 + 顶部柔光 ---------- */
+
+body {
+  background: #070709 !important;
+}
+
+section.about, section.gallery, section.inspire, section.quote, section.contact,
+.editor-shell, .t-shell, .footer, .t-footer, .site-footer {
+  background: transparent !important;
+}
+
+/* ---------- 导航：明亮磨砂悬浮药丸 ---------- */
+
+.nav, .t-nav, .wm-nav {
+  margin: 12px 16px !important;
+  border-radius: 24px !important;
+  background:
+    rgba(255, 255, 255, 0.16) padding-box,
+    conic-gradient(from var(--disp-angle) at 50% 50%, rgba(255,95,95,0.9), rgba(255,185,85,0.85), rgba(170,255,120,0.7), rgba(85,215,255,0.85), rgba(130,120,255,0.9), rgba(255,95,95,0.9)) border-box !important;
+  -webkit-backdrop-filter: blur(48px) saturate(200%);
+  backdrop-filter: blur(48px) saturate(200%);
+  border: 2.5px solid transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 0 22px rgba(255, 255, 255, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+.nav.is-scrolled { background: rgba(255, 255, 255, 0.12) !important; }
+
+/* ---------- 玻璃面板：白透 + 顶部发光 + 大圆角 ---------- */
+
+.panel, .workflow-panel, .details-panel, .quick-panel, .t-panel, .tab-pane > .field-grid,
+.tool-card, .inspire__box, .result-item, .file-item, .template-card, .swatch,
+.hist-stat, .lightbox__body, .batch {
+  border-radius: 28px !important;
+  background:
+    radial-gradient(130% 85% at 50% -12%, rgba(255, 255, 255, 0.20), transparent 55%) padding-box,
+    linear-gradient(168deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.07) 55%, rgba(255, 255, 255, 0.12) 100%) padding-box,
+    conic-gradient(from var(--disp-angle) at 50% 50%, rgba(255,95,95,0.55), rgba(255,185,85,0.50), rgba(170,255,120,0.42), rgba(85,215,255,0.50), rgba(130,120,255,0.55), rgba(255,95,95,0.55)) border-box !important;
+  -webkit-backdrop-filter: blur(46px) saturate(210%);
+  backdrop-filter: blur(46px) saturate(210%);
+  border: 1.5px solid transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.50),
+    inset 0 0 26px rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08),
+    0 26px 70px rgba(0, 0, 0, 0.52) !important;
+}
+
+.tool-card:hover, .result-item:hover, .file-item:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.60),
+    inset 0 0 26px rgba(255, 255, 255, 0.08),
+    0 34px 90px rgba(0, 0, 0, 0.55) !important;
+  transform: translateY(-3px);
+}
+
+/* 预览舞台：磨砂画框 */
+.t-stage, .canvas-stage, .compare-stage, .hist-stage {
+  border-radius: 26px !important;
+  background:
+    radial-gradient(130% 85% at 50% -12%, rgba(255, 255, 255, 0.16), transparent 55%) padding-box,
+    rgba(255, 255, 255, 0.07) padding-box,
+    conic-gradient(from var(--disp-angle) at 50% 50%, rgba(255,95,95,0.55), rgba(255,185,85,0.50), rgba(170,255,120,0.42), rgba(85,215,255,0.50), rgba(130,120,255,0.55), rgba(255,95,95,0.55)) border-box !important;
+  -webkit-backdrop-filter: blur(48px) saturate(190%);
+  backdrop-filter: blur(48px) saturate(190%);
+  border: 1.5px solid transparent !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 0 24px rgba(255, 255, 255, 0.05),
+    0 40px 100px rgba(0, 0, 0, 0.55) !important;
+}
+
+/* ---------- 按钮：白玻璃 + 亮边 ---------- */
+
+.btn, .primary-button, .secondary-button, .t-btn, .t-chip, .filter, .step-tab,
+.lightbox__close, .lightbox__nav, .back-top, .file-del, .zoom-bar {
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  backdrop-filter: blur(28px) saturate(190%);
+}
+
+.btn:not(.btn--ghost), .t-btn:not(.t-btn--ghost), .primary-button {
+  border-radius: 24px !important;
+  background: linear-gradient(170deg, rgba(255, 110, 88, 0.90), rgba(214, 64, 40, 0.85)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.60),
+    inset 0 -2px 6px rgba(130, 25, 8, 0.30),
+    0 12px 36px rgba(255, 99, 71, 0.30) !important;
+}
+
+.secondary-button, .btn--ghost, .t-btn--ghost, .t-chip, .filter, .step-tab,
+.lightbox__close, .lightbox__nav, .back-top {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.40),
+    inset 0 0 14px rgba(255, 255, 255, 0.05) !important;
+}
+
+.t-chip.is-active, .filter.is-active, .step-tab.is-active {
+  background: linear-gradient(170deg, rgba(255, 110, 88, 0.92), rgba(214, 64, 40, 0.86)) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #fff !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 10px 30px rgba(255, 99, 71, 0.28) !important;
+}
+
+/* ---------- 输入框 ---------- */
+
+input, select, textarea {
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+
+.gallery__search { background: rgba(255, 255, 255, 0.12) !important; }
+
+/* ---------- 拖拽区 ---------- */
+
+.t-drop, .drop-button {
+  border-radius: 24px !important;
+  background:
+    rgba(255, 255, 255, 0.09) padding-box,
+    conic-gradient(from var(--disp-angle) at 50% 50%, rgba(255,95,95,0.55), rgba(255,185,85,0.50), rgba(170,255,120,0.42), rgba(85,215,255,0.50), rgba(130,120,255,0.55), rgba(255,95,95,0.55)) border-box !important;
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  backdrop-filter: blur(36px) saturate(180%);
+  border: 1.5px dashed transparent !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+}
+
+.t-drop:hover, .t-drop.is-over, .drop-button:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 99, 71, 0.7) !important;
+}
+
+/* ---------- 作品卡片：白色磨砂图注 ---------- */
+
+.card figcaption {
+  line-height: 1.6;
+  background: rgba(20, 20, 24, 0.35);
+  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(30px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  margin: 14px;
+  padding: 10px 18px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.40);
+}
+
+/* ---------- 灯箱 ---------- */
+
+.lightbox {
+  background: rgba(8, 8, 11, 0.45) !important;
+  -webkit-backdrop-filter: blur(56px) saturate(180%);
+  backdrop-filter: blur(56px) saturate(180%);
+}
+
+.lightbox img { border-radius: 18px; }
+
+/* ---------- 缩放条 ---------- */
+
+.zoom-bar {
+  border-radius: 24px !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    0 14px 46px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ---------- Q弹按键：干脆利落的弹性 ---------- */
+
+.btn, .t-btn, .primary-button, .secondary-button, .t-chip, .filter, .step-tab,
+.lightbox__close, .lightbox__nav, .back-top, .file-del, .zoom-bar button,
+.template-card, .tool-card, .swatch, .theme-toggle {
+  transition:
+    transform 0.6s cubic-bezier(0.25, 1.8, 0.4, 1),
+    filter 0.15s ease !important;
+  will-change: transform;
+}
+
+.btn:active, .t-btn:active, .primary-button:active, .secondary-button:active,
+.t-chip:active, .filter:active, .step-tab:active, .lightbox__close:active,
+.lightbox__nav:active, .back-top:active, .file-del:active, .zoom-bar button:active,
+.template-card:active, .tool-card:active, .swatch:active, .theme-toggle:active {
+  transform: scale(0.96) !important;
+  filter: brightness(1.2);
+  transition-duration: 0.07s, 0.07s !important;
+}
+
+/* ---------- 首屏：中性深色，去彩色光斑 ---------- */
+
+.hero {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 45%),
+    #0a0a0d !important;
+}
+
+
+/* ---------- 壁纸与柔光：玻璃折射的内容来源 ---------- */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 50% -10%, rgba(255, 255, 255, 0.10), transparent 60%),
+    radial-gradient(140% 120% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.35) 100%);
+}
+/* ---------- 动态色散：边缘彩虹随光流转 ---------- */
+
+.panel, .workflow-panel, .details-panel, .quick-panel, .t-panel, .tab-pane > .field-grid,
+.tool-card, .inspire__box, .result-item, .file-item, .template-card, .swatch,
+.hist-stat, .lightbox__body, .batch,
+.t-stage, .canvas-stage, .compare-stage, .hist-stage,
+.nav, .t-nav, .wm-nav,
+.t-drop, .drop-button {
+  animation: disp-drift 6s linear infinite;
+}
+
+
+/* ============================================
+   全交互动画（Apple 风格：缩放淡入 + 弹簧微过冲 + 按压闪亮）
+   ============================================ */
+
+/* Apple 入场：从 96% 缩放淡入，弹簧曲线轻微过冲 */
+@keyframes appleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes appleFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 链接与文字颜色过渡 */
+a, .nav__link, .t-nav__links a, .wm-nav__links a, .footer__link {
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+/* 悬停：轻柔抬升（弹簧） */
+.btn, .t-btn, .primary-button, .secondary-button, .t-chip, .filter, .step-tab,
+.theme-toggle, .back-top, .file-del, .lightbox__close, .lightbox__nav {
+  transition:
+    transform 0.6s cubic-bezier(0.25, 1.8, 0.4, 1),
+    box-shadow 0.35s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    filter 0.15s ease !important;
+}
+
+.btn:hover, .t-btn:hover, .primary-button:hover, .secondary-button:hover,
+.t-chip:hover, .filter:hover, .step-tab:hover, .theme-toggle:hover,
+.back-top:hover, .file-del:hover, .lightbox__close:hover, .lightbox__nav:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 14px 40px rgba(0, 0, 0, 0.45),
+    0 0 28px rgba(255, 255, 255, 0.12) !important;
+}
+
+.workflow-progress button {
+  transition: transform 0.6s cubic-bezier(0.25, 1.8, 0.4, 1), background 0.3s, color 0.3s;
+}
+.workflow-progress button:hover { transform: translateY(-2px) scale(1.03); }
+
+/* 聚焦光环 */
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(255, 99, 71, 0.75) !important;
+  box-shadow:
+    0 0 0 3px rgba(255, 99, 71, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+/* 面板展开 / 标签切换：缩放淡入 */
+.details-panel[open] > .field-grid { animation: appleIn 0.45s cubic-bezier(0.3, 0.9, 0.3, 1); }
+.tab-pane.is-active { animation: appleIn 0.4s cubic-bezier(0.3, 0.9, 0.3, 1); }
+.workflow-step.is-active { animation: appleIn 0.45s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
+/* 列表项错峰入场（Apple 式多米诺，前 10 项） */
+.result-item, .file-item, .filelist .result-item {
+  animation: appleIn 0.5s cubic-bezier(0.3, 0.9, 0.3, 1) both;
+}
+.result-item:nth-child(1), .file-item:nth-child(1) { animation-delay: 0.03s; }
+.result-item:nth-child(2), .file-item:nth-child(2) { animation-delay: 0.06s; }
+.result-item:nth-child(3), .file-item:nth-child(3) { animation-delay: 0.09s; }
+.result-item:nth-child(4), .file-item:nth-child(4) { animation-delay: 0.12s; }
+.result-item:nth-child(5), .file-item:nth-child(5) { animation-delay: 0.15s; }
+.result-item:nth-child(6), .file-item:nth-child(6) { animation-delay: 0.18s; }
+.result-item:nth-child(7), .file-item:nth-child(7) { animation-delay: 0.21s; }
+.result-item:nth-child(8), .file-item:nth-child(8) { animation-delay: 0.24s; }
+.result-item:nth-child(9), .file-item:nth-child(9) { animation-delay: 0.27s; }
+.result-item:nth-child(10), .file-item:nth-child(10) { animation-delay: 0.30s; }
+
+/* 提示条出现 */
+.t-notice:not([hidden]) { animation: appleIn 0.35s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
+/* 灯箱开合 */
+.lightbox.is-open { animation: appleFade 0.3s ease; }
+.lightbox.is-open .lightbox__body { animation: appleIn 0.5s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
+/* 回到顶部出现 */
+.back-top.is-show { animation: appleIn 0.4s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
+/* 缩放条出现 */
+.zoom-bar:not([style*="none"]) { animation: appleIn 0.35s cubic-bezier(0.3, 0.9, 0.3, 1); }
+
+/* 色块悬停 */
+.swatch { transition: transform 0.6s cubic-bezier(0.25, 1.8, 0.4, 1), border-color 0.3s; }
+
+/* 工具卡箭头滑动 */
+.tool-card .go { display: inline-block; transition: transform 0.35s cubic-bezier(0.25, 1.8, 0.4, 1); }
+.tool-card:hover .go { transform: translateX(5px); }
+
+/* 卡片图注上浮 */
+.card figcaption { transition: transform 0.5s cubic-bezier(0.3, 0.9, 0.3, 1), background 0.35s; }
+.card:hover figcaption { transform: translateY(-2px); }
+
+/* 尊重系统"减少动态效果"偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ============================================
+   工具页与灵感区：无彩虹色散（纯净白玻璃）
+   ============================================ */
+
+.tool-page .panel, .tool-page .workflow-panel, .tool-page .details-panel,
+.tool-page .quick-panel, .tool-page .t-panel, .tool-page .tab-pane > .field-grid,
+.tool-page .tool-card, .tool-page .result-item, .tool-page .file-item,
+.tool-page .template-card, .tool-page .swatch, .tool-page .hist-stat,
+.tool-page .batch, .inspire__box {
+  background:
+    radial-gradient(130% 85% at 50% -12%, rgba(255, 255, 255, 0.20), transparent 55%) padding-box,
+    linear-gradient(168deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 55%, rgba(255, 255, 255, 0.11) 100%) padding-box !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.tool-page .t-stage, .tool-page .canvas-stage, .tool-page .compare-stage,
+.tool-page .hist-stage {
+  background:
+    radial-gradient(130% 85% at 50% -12%, rgba(255, 255, 255, 0.16), transparent 55%) padding-box,
+    rgba(255, 255, 255, 0.07) padding-box !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+}
+
+.tool-page .t-nav, .tool-page .wm-nav {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border: 1px solid rgba(255, 255, 255, 0.26) !important;
+}
+
+.tool-page .t-drop, .tool-page .drop-button {
+  background: rgba(255, 255, 255, 0.09) !important;
+  border: 1.5px dashed rgba(255, 255, 255, 0.32) !important;
+}
+
+/* 色散动画无视系统“减少动态效果” */
+.panel, .workflow-panel, .details-panel, .quick-panel, .t-panel, .tab-pane > .field-grid,
+.tool-card, .inspire__box, .result-item, .file-item, .template-card, .swatch,
+.hist-stat, .lightbox__body, .batch,
+.t-stage, .canvas-stage, .compare-stage, .hist-stage,
+.nav, .t-nav, .wm-nav,
+.t-drop, .drop-button {
+  animation: disp-drift 6s linear infinite !important;
+}
+
+
+/* ---------- 隐藏滚动条（滚轮/触控板正常滚动） ---------- */
+
+html, body, * {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* 旧 Edge/IE */
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                  /* Chrome/Edge/Safari */
+}
+
+
+/* ---------- 灯箱左右切换箭头：保持居中，按下有缩放动画 ---------- */
+
+.lightbox__nav:hover {
+  transform: translateY(-50%) !important;
+}
+
+.lightbox__nav:active {
+  transform: translateY(-50%) scale(0.88) !important;
+  transition-duration: 0.07s !important;
+}
+
+
+/* ---------- 圆角统一：按钮/芯片全圆药丸，导航与面板大圆角 ---------- */
+
+.btn, .t-btn, .primary-button, .secondary-button, .t-chip, .filter, .step-tab,
+.theme-toggle, .zoom-bar, .file-del, .lightbox__close, .lightbox__nav, .back-top {
+  border-radius: 999px !important;
+}
+
+
+/* ---------- 滑杆/复选框/取色器：不做玻璃盒子（原生控件保持干净） ---------- */
+
+input[type="range"],
+input[type="checkbox"],
+input[type="color"] {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+input[type="range"]:focus,
+input[type="checkbox"]:focus,
+input[type="color"]:focus {
+  box-shadow: none !important;
+}
+
+input[type="range"], input[type="checkbox"] { accent-color: #ff6347; }
+input[type="checkbox"] { width: 16px; min-height: 16px; }
+
+
+/* ---------- 编辑导出标签页：字段网格玻璃卡片内边距 ---------- */
+
+.tab-pane > .field-grid {
+  padding: 18px 16px;
+}

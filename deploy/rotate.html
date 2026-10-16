@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>旋转翻转工具 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 旋转翻转工具 —— 批量旋转 90/180 度、水平垂直镜像翻转。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .rotate-opts { display: grid; gap: 0.9rem; margin-top: 1.4rem; }
+    .result-list { margin-top: 1.4rem; display: grid; gap: 10px; }
+    .result-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #141414;
+    }
+    .result-item canvas { border-radius: 6px; flex-shrink: 0; }
+    .result-meta { flex: 1; min-width: 0; }
+    .result-meta b { display: block; font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .result-meta small { color: var(--subtle); font-size: 0.8rem; }
+    .file-del {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .file-del:hover { border-color: #ff6347; color: #ff6347; }
+    .result-item { cursor: pointer; }
+    .result-item.is-selected { border-color: var(--accent); box-shadow: 0 0 0 1px rgba(255,99,71,0.35); }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">ROTATE · 小工具</p>
+      <h1 class="t-title">旋转翻转工具</h1>
+      <p class="t-desc">批量旋转 90°/180°、水平 / 垂直镜像翻转，原分辨率导出。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片（可多张）</strong>
+      <small>JPG / PNG / WebP</small>
+    </button>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="t-notice" id="upload-notice" hidden></div>
+    <div class="result-list" id="filelist"></div>
+
+    <div class="t-panel rotate-opts" id="opts" hidden>
+      <div class="t-chips" id="mode-chips">
+        <button type="button" class="t-chip is-active" data-mode="left">左转 90°</button>
+        <button type="button" class="t-chip" data-mode="right">右转 90°</button>
+        <button type="button" class="t-chip" data-mode="180">旋转 180°</button>
+        <button type="button" class="t-chip" data-mode="flipH">水平翻转</button>
+        <button type="button" class="t-chip" data-mode="flipV">垂直翻转</button>
+        <button class="t-btn" id="btn-go" type="button" style="margin-left:auto;">开始处理</button>
+      </div>
+    </div>
+
+    <div class="t-stage" id="stage">
+      <div class="t-empty" id="empty">导入照片后这里显示处理效果预览（点击列表照片切换）</div>
+      <canvas class="t-canvas" id="preview"></canvas>
+    </div>
+
+    <div class="result-list" id="results"></div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn" id="btn-zip" type="button">📦 全部下载 ZIP</button>
+      <button class="t-btn t-btn--ghost" id="btn-clear" type="button">🗑 清空</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/rotate.js?v=3"></script>
+</body>
+</html>

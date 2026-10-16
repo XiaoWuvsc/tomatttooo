@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对比查看器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo 对比查看器 —— 两张照片滑块对比，调色前后一目了然。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css">  <style>
+    .compare-dropzones { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem; }
+    @media (max-width: 720px) { .compare-dropzones { grid-template-columns: 1fr; } }
+    .compare-dropzones .t-drop { padding: 1.4rem 0.8rem; }
+    .compare-stage {
+      position: relative;
+      margin-top: 1.4rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      user-select: none;
+      touch-action: none;
+      background: #0a0a0a;
+      cursor: ew-resize;
+    }
+    #compare-canvas { display: block; width: 100%; height: auto; }
+    .compare-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ff6347;
+      box-shadow: 0 0 12px rgba(255, 99, 71, 0.8);
+      pointer-events: none;
+    }
+    .compare-handle {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ff6347;
+      background: rgba(13, 13, 13, 0.85);
+      color: #fff;
+      font-size: 1rem;
+      display: grid;
+      place-items: center;
+      pointer-events: none;
+    }
+    .compare-tags { display: flex; justify-content: space-between; margin-top: 0.6rem; color: var(--muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">COMPARE · 小工具</p>
+      <h1 class="t-title">对比查看器</h1>
+      <p class="t-desc">放两张照片，拖动中间滑杆左右对比——调色前后、修图前后一眼看穿。</p>
+    </div>
+
+    <div class="compare-dropzones">
+      <button class="t-drop" id="drop-a" type="button">
+        <strong>左侧：原图</strong>
+        <small id="label-a">点击或拖入第一张</small>
+      </button>
+      <button class="t-drop" id="drop-b" type="button">
+        <strong>右侧：修改后</strong>
+        <small id="label-b">点击或拖入第二张</small>
+      </button>
+    </div>
+    <input type="file" id="file-a" accept="image/*" hidden>
+    <input type="file" id="file-b" accept="image/*" hidden>
+
+    <div class="compare-stage" id="stage" hidden>
+      <canvas id="compare-canvas"></canvas>
+      <div class="compare-divider" id="divider"></div>
+      <div class="compare-handle" id="handle">↔</div>
+    </div>
+    <div class="compare-tags">
+      <span id="tag-a"></span>
+      <span id="tag-b"></span>
+    </div>
+
+    <div class="t-actions" id="actions" hidden>
+      <button class="t-btn t-btn--ghost" id="btn-center" type="button">居中分割线</button>
+      <button class="t-btn" id="btn-swap" type="button">🔁 左右交换</button>
+      <button class="t-btn" id="btn-export" type="button">⬇ 导出当前对比图</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/compare.js?v=3"></script>
+</body>
+</html>

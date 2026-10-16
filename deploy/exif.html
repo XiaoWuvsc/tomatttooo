@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXIF 查看器 · tomatttooo</title>
+  <meta name="description" content="tomatttooo EXIF 查看器 —— 拖入照片即可查看相机、镜头、光圈、快门、ISO 等拍摄参数。">
+  <link rel="icon" href="assets/brand/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tools.css?v=18">
+
+  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css"></head>
+<body class="tool-page">
+
+  <header class="t-nav">
+    <a class="t-nav__logo" href="index.html">
+      <img class="t-nav__mark" src="assets/brand/avatar.png" alt="tomatttooo">
+      tomatttooo<span style="color:#ff6347">.</span>
+    </a>
+    <nav class="t-nav__links">
+      <a href="index.html">返回主页</a>
+      <a href="tools.html">工具选择</a>
+    </nav>
+  </header>
+
+  <main class="t-shell">
+    <div class="t-head">
+      <p class="t-eyebrow">EXIF VIEWER · 小工具</p>
+      <h1 class="t-title">EXIF 查看器</h1>
+      <p class="t-desc">拖入一张相机直出的照片，立刻看到它背后的全部拍摄参数。</p>
+    </div>
+
+    <button class="t-drop" id="drop" type="button">
+      <strong>点击或拖入照片</strong>
+      <small>JPEG / PNG / WebP · 自动解析 EXIF</small>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+
+    <div class="t-stage" id="stage">
+      <div class="t-empty" id="empty">📷 导入照片开始查看</div>
+      <canvas class="t-canvas" id="canvas"></canvas>
+    </div>
+
+    <div class="t-panel" id="info-panel" style="margin-top:1.4rem; display:none;">
+      <div class="t-grid" id="info-grid"></div>
+    </div>
+
+    <div class="t-notice" id="exif-notice" hidden>⚠️ 未找到 EXIF，这张照片可能被软件处理过或来自截图。</div>
+
+    <div class="t-actions">
+      <button class="t-btn" id="btn-copy" type="button" disabled>📋 复制参数</button>
+    </div>
+  </main>
+
+  <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
+
+  <script src="js/page-transition.js?v=1"></script>
+  <script src="js/theme-toggle.js?v=8"></script>
+  <script src="js/icons.js?v=6"></script>
+  <script src="js/exif.js?v=8"></script>
+  <script src="js/preview-zoom.js?v=8"></script>
+</body>
+</html>
