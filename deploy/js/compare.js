@@ -112,14 +112,7 @@ function exportImage() {
   if (!ready()) return;
   canvas.toBlob((blob) => {
     if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "tomatttooo-对比图.png";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    window.saveBlob(blob, "tomatttooo-对比图.png");
   }, "image/png");
 }
 

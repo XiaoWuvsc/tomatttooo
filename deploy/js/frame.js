@@ -77,14 +77,7 @@ function exportImage() {
   drawFrame(c2, 2400); // 导出基准 2400px 长边
   out.toBlob((blob) => {
     if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "tomatttooo-相框.jpg";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    window.saveBlob(blob, "tomatttooo-相框.jpg");
   }, "image/jpeg", 1.0);
 }
 

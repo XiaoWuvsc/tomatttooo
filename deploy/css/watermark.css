@@ -60,7 +60,6 @@ img { max-width: 100%; }
   background: rgba(26, 26, 28, 0.88);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--line);
 }
 
 .wm-nav__logo {
@@ -826,7 +825,6 @@ input[type="range"] {
   gap: 6px;
   margin-top: 14px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--line);
 }
 
 .step-tab {
@@ -878,18 +876,21 @@ html, body, * {
 }
 
 
-/* ---------- 顶栏圆角悬浮（用 sticky 偏移，不用 margin-top） ---------- */
+/* ---------- 顶栏圆角悬浮（固定定位：锚定视口，永不超出浏览器） ---------- */
 
 .nav, .t-nav, .wm-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 16px !important;
+  right: 16px !important;
+  margin: 0 !important;
   border-radius: 18px;
-  margin: 0 16px;
   overflow: hidden;
+  clip-path: inset(0 round 18px);
 }
 
-.t-nav, .wm-nav {
-  top: 10px;
-}
-
+/* 工具页给顶栏留出空间 */
+.tool-page { padding-top: 70px; }
 
 /* ---------- 小屏顶栏收紧 ---------- */
 
@@ -899,4 +900,53 @@ html, body, * {
     border-radius: 14px;
   }
   .t-nav, .wm-nav { top: 8px; }
+}
+
+
+/* ---------- 禁止横向溢出（只作用于 html，避免破坏 sticky） ---------- */
+
+html { overflow-x: hidden; }
+html, body { max-width: 100%; }
+
+
+/* ---------- 顶栏尺寸与主页滚动后一致（紧凑款） ---------- */
+
+.t-nav, .wm-nav {
+  padding: 0.7rem clamp(1.2rem, 5vw, 4rem);
+}
+
+
+/* ---------- 手机端适配（≤640px） ---------- */
+
+@media (max-width: 640px) {
+  .t-shell { padding: 1.2rem 10px 4rem !important; }
+  .t-head { margin-bottom: 1.2rem !important; }
+  .t-title { font-size: clamp(1.7rem, 8vw, 2.3rem) !important; }
+  .t-desc { font-size: 0.9rem !important; }
+
+  .tool-cards { gap: 10px !important; }
+  .tool-card { padding: 1.1rem 1rem !important; }
+
+  .field-grid { grid-template-columns: 1fr !important; }
+  .span-2 { grid-column: span 1 !important; }
+
+  .t-actions { flex-direction: column !important; align-items: stretch !important; }
+  .t-actions .t-btn, .t-actions .btn { width: 100% !important; }
+
+  .workflow-actions, .action-row { flex-wrap: wrap !important; gap: 8px !important; }
+  .workflow-actions .primary-button,
+  .workflow-actions .secondary-button,
+  .action-row .secondary-button { flex: 1 1 100% !important; }
+
+  .t-drop { padding: 2.4rem 1rem !important; }
+  .t-stage { max-height: 52vh !important; }
+
+  .zoom-bar { padding: 5px 10px !important; gap: 6px !important; }
+  .zoom-bar button { width: 28px !important; height: 28px !important; }
+
+  .t-grid { gap: 10px !important; }
+  .tabs button { font-size: 10px !important; padding: 0 6px !important; }
+  .template-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+  .canvas-stage { min-height: 50vh !important; }
+  .details-panel > .field-grid { margin: 12px 10px 14px !important; }
 }

@@ -48,17 +48,22 @@ function initNav() {
 function initBurger() {
   const burger = document.getElementById("burger");
   const links = document.querySelector(".nav__links");
+  const nav = document.querySelector(".nav");
+
+  const close = () => {
+    burger.classList.remove("is-open");
+    links.classList.remove("is-open");
+    if (nav) nav.classList.remove("menu-open");
+  };
 
   burger.addEventListener("click", () => {
-    burger.classList.toggle("is-open");
-    links.classList.toggle("is-open");
+    const open = links.classList.toggle("is-open");
+    burger.classList.toggle("is-open", open);
+    if (nav) nav.classList.toggle("menu-open", open);
   });
 
   links.addEventListener("click", (e) => {
-    if (e.target.matches(".nav__link")) {
-      burger.classList.remove("is-open");
-      links.classList.remove("is-open");
-    }
+    if (e.target.matches(".nav__link")) close();
   });
 }
 

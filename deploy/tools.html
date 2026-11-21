@@ -7,9 +7,9 @@
   <meta name="description" content="tomatttooo 的摄影小工具：水印工坊、EXIF 查看器、画幅裁切，随开随用。">
   <link rel="icon" href="assets/brand/favicon.png">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tools.css">
-
-  <link rel="stylesheet" href="css/liquid-glass.css?v=25" id="glass-css"></head>
+  <link rel="stylesheet" href="css/tools.css?v=26">
+  <link rel="stylesheet" href="css/liquid-glass.css?v=29" id="glass-css">
+</head>
 <body class="tool-page">
 
   <header class="t-nav">
@@ -26,6 +26,7 @@
     <div class="t-head">
       <p class="t-eyebrow">TOOLS · 工具箱</p>
       <h1 class="t-title">选择一个工具</h1>
+      <p class="t-desc">摄影小工具，随开随用。</p>
     </div>
 
     <div class="tool-cards">
@@ -50,7 +51,7 @@
       <a class="tool-card" href="split.html">
         <span class="icon">🧩</span>
         <strong>切图工具</strong>
-        <p>九宫格 3×3 切图发朋友圈、三格横切拼图（竖图不切），一键导出 ZIP。</p>
+        <p>九宫格 3×3 切图发朋友圈、三格横切、二格横切（竖图不切），一键导出 ZIP。</p>
         <span class="go">进入 →</span>
       </a>
       <a class="tool-card" href="compress.html">
@@ -70,6 +71,7 @@
         <strong>色彩提取器</strong>
         <p>提取照片主色调色板（前 8 色 + 占比），点色块复制色值。</p>
         <span class="go">进入 →</span>
+      </a>
       <a class="tool-card" href="collage.html">
         <span class="icon">🧱</span>
         <strong>拼图工具</strong>
@@ -81,6 +83,7 @@
         <strong>直方图查看器</strong>
         <p>亮度与 RGB 三通道直方图，曝光统计，一眼判断过曝欠曝。</p>
         <span class="go">进入 →</span>
+      </a>
       <a class="tool-card" href="rotate.html">
         <span class="icon">🔁</span>
         <strong>旋转翻转工具</strong>
@@ -92,6 +95,7 @@
         <strong>对比查看器</strong>
         <p>两张照片滑块对比：拖动分割线看调色前后、修图前后差异。</p>
         <span class="go">进入 →</span>
+      </a>
       <a class="tool-card" href="frame.html">
         <span class="icon">⬜</span>
         <strong>相框工具</strong>
@@ -103,9 +107,10 @@
 
   <footer class="t-footer">© <span id="year">2025</span> tomatttooo · 用镜头记录世界</footer>
 
+  <script src="js/download.js?v=2"></script>
   <script src="js/page-transition.js?v=1"></script>
-  <script src="js/theme-toggle.js?v=8"></script>
-  <script src="js/icons.js?v=6"></script>
+  <script src="js/theme-toggle.js?v=9"></script>
+  <script src="js/icons.js?v=8"></script>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>

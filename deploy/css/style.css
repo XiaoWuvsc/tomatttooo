@@ -90,7 +90,6 @@ button.btn {
 .nav.is-scrolled {
   background: rgba(26, 26, 28, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
   padding-block: 0.7rem;
 }
 
@@ -572,6 +571,21 @@ button.btn {
 
   .nav__links.is-open { opacity: 1; visibility: visible; }
 
+  /* 菜单展开时解除导航的裁剪，让全屏菜单层正常显示并可滑动 */
+  .nav.menu-open {
+    overflow: visible !important;
+    clip-path: none !important;
+    border-radius: 0 !important;
+  }
+
+  .nav__links.is-open {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    padding: 6rem 2rem 3rem;
+    gap: 2rem;
+  }
+
   .nav__burger { display: flex; z-index: 110; }
 
   .nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -711,18 +725,21 @@ html, body, * {
 }
 
 
-/* ---------- 顶栏圆角悬浮（用 sticky 偏移，不用 margin-top） ---------- */
+/* ---------- 顶栏圆角悬浮（固定定位：锚定视口，永不超出浏览器） ---------- */
 
 .nav, .t-nav, .wm-nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 16px !important;
+  right: 16px !important;
+  margin: 0 !important;
   border-radius: 18px;
-  margin: 0 16px;
   overflow: hidden;
+  clip-path: inset(0 round 18px);
 }
 
-.t-nav, .wm-nav {
-  top: 10px;
-}
-
+/* 工具页给顶栏留出空间 */
+.tool-page { padding-top: 70px; }
 
 /* ---------- 小屏顶栏收紧 ---------- */
 
@@ -732,4 +749,42 @@ html, body, * {
     border-radius: 14px;
   }
   .t-nav, .wm-nav { top: 8px; }
+}
+
+
+/* ---------- 禁止横向溢出（只作用于 html，避免破坏 sticky） ---------- */
+
+html { overflow-x: hidden; }
+html, body { max-width: 100%; }
+
+
+/* ---------- 手机端适配（≤640px） ---------- */
+
+@media (max-width: 640px) {
+  body { -webkit-tap-highlight-color: transparent; }
+
+  .nav, .t-nav, .wm-nav {
+    left: 10px !important;
+    right: 10px !important;
+    border-radius: 14px !important;
+    clip-path: inset(0 round 14px) !important;
+  }
+  .nav, .t-nav, .wm-nav { padding: 0.6rem 14px !important; }
+  .nav__links, .t-nav__links, .wm-nav__links { gap: 1rem !important; }
+  .nav__logo, .t-nav__logo, .wm-nav__logo { font-size: 1.05rem !important; }
+
+  .hero__title { font-size: clamp(2.3rem, 14vw, 3.4rem) !important; }
+  .hero__sub { font-size: 0.95rem !important; margin-bottom: 1.8rem !important; }
+  .hero__content { padding: 0 10px !important; }
+
+  .gallery__grid { gap: 8px !important; }
+  .card figcaption { padding: 1.4rem 0.7rem 0.7rem !important; font-size: 0.8rem; }
+  .card figcaption h3 { font-size: 0.95rem; }
+
+  .section-title { font-size: clamp(1.5rem, 7vw, 2rem) !important; }
+  .about__photo { max-width: 320px !important; }
+  .footer, .t-footer, .site-footer { padding: 2rem 1rem !important; }
+
+  .lightbox__close { width: 38px !important; height: 38px !important; top: 0.8rem !important; right: 0.8rem !important; }
+  .lightbox img { max-height: 70vh !important; }
 }

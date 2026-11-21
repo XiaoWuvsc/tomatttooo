@@ -277,14 +277,7 @@ function renderResults() {
     dl.innerHTML = (window.ICONS ? window.ICONS.download : "") + " 下载";
     dl.style.padding = "0.45rem 1.2rem";
     dl.addEventListener("click", () => {
-      const url = URL.createObjectURL(r.blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = r.name;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      window.saveBlob(r.blob, r.name);
     });
 
     div.append(thumb, meta, dl);
@@ -325,14 +318,7 @@ async function downloadZip() {
     entries.push({ name: r.name, data: new Uint8Array(await r.blob.arrayBuffer()) });
   }
   const zip = zipStore(entries);
-  const url = URL.createObjectURL(zip);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "tomatttooo-旋转翻转包.zip";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  window.saveBlob(zip, "tomatttooo-旋转翻转包.zip");
 }
 
 function bind() {

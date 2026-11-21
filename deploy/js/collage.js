@@ -126,14 +126,7 @@ function exportImage() {
   drawCollage(off.getContext("2d"), CELL);
   off.toBlob((blob) => {
     if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `tomatttooo-拼图-${state.layout}.jpg`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    window.saveBlob(blob, `tomatttooo-拼图-${state.layout}.jpg`);
   }, "image/jpeg", 1.0);
 }
 

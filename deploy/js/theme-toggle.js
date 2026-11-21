@@ -19,6 +19,8 @@
     if (!(path.endsWith("index.html") || path.endsWith("/"))) return;
     const footer = document.querySelector("footer");
     if (!footer) return;
+    // 放进版权文字那一行，避免在底部多出一条
+    const host = footer.querySelector("p") || footer;
 
     const btn = document.createElement("button");
     btn.type = "button";
@@ -30,7 +32,7 @@
       "background:rgba(255,255,255,0.05);" +
       "color:inherit;font:11px/1.6 Inter,'Microsoft YaHei',sans-serif;" +
       "opacity:0.75;transition:opacity 0.3s ease, transform 0.5s cubic-bezier(0.25,1.8,0.4,1);";
-    footer.appendChild(btn);
+    host.appendChild(btn);
 
     btn.addEventListener("mouseenter", () => { btn.style.opacity = "1"; });
     btn.addEventListener("mouseleave", () => { btn.style.opacity = "0.75"; });

@@ -277,15 +277,8 @@ async function exportZip() {
       if (blob) entries.push({ name: p.name, data: new Uint8Array(await blob.arrayBuffer()) });
     }
     const zip = zipStore(entries);
-    const url = URL.createObjectURL(zip);
-    const a = document.createElement("a");
     const tag = state.mode === "strip3" ? "三格" : state.mode === "strip2" ? "二格" : "九宫格";
-    a.href = url;
-    a.download = `${state.name}-${tag}.zip`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    window.saveBlob(zip, `${state.name}-${tag}.zip`);
     btn.textContent = "已导出";
     setTimeout(() => {
       btn.innerHTML = (window.ICONS ? window.ICONS.download : "") + " 导出 ZIP";
